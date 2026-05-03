@@ -27,6 +27,8 @@ public class Runner {
         presenter.setModel(model);
         presenter.setView(view);
 
+        ((Game)model).initialize();
+
     }
 
     public void run() {

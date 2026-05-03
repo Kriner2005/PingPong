@@ -7,22 +7,6 @@ public class Game implements ModelInterface {
     private Paddle paddle;
     private int panelWidth, panelHeight;
 
-    public Game() {
-        this.ball = new Ball(
-                panelWidth / 2,
-                panelHeight / 2,
-                40,
-                5,
-                -5);
-
-        this.paddle = new Paddle(
-                50,
-                panelHeight / 2 - 50,
-                20,
-                100,
-                5);
-    }
-
     @Override
     public void update() {
         ball.update(panelWidth, panelHeight);
@@ -67,4 +51,10 @@ public class Game implements ModelInterface {
         this.panelHeight = height;
     }
 
+  public void initialize() {
+    if (panelWidth > 0 && panelHeight > 0) {
+        this.ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 5, -5);
+        this.paddle = new Paddle(50, panelHeight / 2 - 50, 20, 100, 5);
+    }
+}
 }

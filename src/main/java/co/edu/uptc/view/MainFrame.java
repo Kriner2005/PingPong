@@ -101,12 +101,4 @@ public class MainFrame extends JFrame implements ViewInterface {
 
         gamePanel.upDateGameView(ballX, ballY, ballSize, paddleX, paddleY, paddleW, paddleH);
     }
-
-    public int getWidth() {
-        return super.getWidth();
-    }
-
-    public int getHeight() {
-        return super.getHeight();
-    }
 }

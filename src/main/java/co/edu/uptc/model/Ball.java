@@ -18,8 +18,8 @@ public class Ball {
         x += dx;
         y += dy;
 
-        if (x < 0 || x + size >= width) {
-            x = Math.max(0, Math.min(x, width));
+        if (x <= 0 || x + size >= width) {
+            x = Math.max(0, Math.min(x, width - size)); 
             dx = -dx;
         }
 

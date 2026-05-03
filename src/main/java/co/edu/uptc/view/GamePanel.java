@@ -30,13 +30,16 @@ public class GamePanel extends JPanel {
     private void initPanel() {
         this.setPreferredSize(new Dimension(950, 800));
         this.setBackground(Color.WHITE);
+        this.setFocusable(true);
 
         int delayMs = 16;
-        new Timer(delayMs, e -> {
-            presenter.update();
-            repaint();
-        }).start();
-
+        gameTimer = new Timer(delayMs, e -> {
+            if (presenter != null) { 
+                presenter.update();
+                repaint();
+            }
+        });
+        gameTimer.start();
     }
 
     public void upDateGameView(double ballX, double ballY, int ballSize,
