@@ -14,13 +14,11 @@ public class Paddle {
     }
 
     public void moveUp(int panelHeight) {
-        if (y > 0)
-            y -= speed;
+        y = Math.max(0, y - speed);
     }
 
     public void moveDown(int panelHeight) {
-        if (y + this.height < panelHeight)
-            y += speed;
+        y = Math.min(panelHeight - this.height, y + speed);
     }
 
     public boolean collidesWithBall(Ball ball) {
