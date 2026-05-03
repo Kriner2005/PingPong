@@ -23,8 +23,8 @@ public class Ball {
             dx = -dx;
         }
 
-        if (y < 0 || y + size >= height) {
-            y = Math.max(0, Math.min(y, height));
+        if (y <= 0 || y + size >= height) {
+            y = Math.max(0, Math.min(y, height- size));
             dy = -dy;
         }
 

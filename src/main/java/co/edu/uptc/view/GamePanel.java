@@ -15,12 +15,17 @@ import co.edu.uptc.interfaces.PresenterInterface;
 
 public class GamePanel extends JPanel {
 
+    private static final int PANEL_WIDTH = 950;
+    private static final int PANEL_HEIGHT = 800;
+    private static final int TIMER_DELAY = 16;
+
     private PresenterInterface presenter;
     private Timer gameTimer;
-    private double x, y;
-    private int paddleX, paddleY, paddleW, paddleH;
+
+    private double ballX, ballY;
     private int ballSize;
-    private Ellipse2D ball;
+    private int paddleX, paddleY, paddleW, paddleH;
+    // private Ellipse2D ball;
 
     public GamePanel() {
         initPanel();
@@ -28,24 +33,25 @@ public class GamePanel extends JPanel {
     }
 
     private void initPanel() {
-        this.setPreferredSize(new Dimension(950, 800));
+        this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         this.setBackground(Color.WHITE);
         this.setFocusable(true);
 
-        int delayMs = 16;
-        gameTimer = new Timer(delayMs, e -> {
-            if (presenter != null) { 
-                presenter.update();
-                repaint();
-            }
-        });
+        gameTimer = new Timer(TIMER_DELAY, e -> updateGameLoop());
         gameTimer.start();
+    }
+
+    private void updateGameLoop() {
+        if (presenter != null) {
+            presenter.update();
+            repaint();
+        }
     }
 
     public void upDateGameView(double ballX, double ballY, int ballSize,
             int paddleX, int paddleY, int paddleW, int paddleH) {
-        this.x = ballX;
-        this.y = ballY;
+        this.ballX = ballX;
+        this.ballY = ballY;
         this.ballSize = ballSize;
         this.paddleX = paddleX;
         this.paddleY = paddleY;
@@ -55,7 +61,9 @@ public class GamePanel extends JPanel {
     }
 
     public void stopGame() {
-        gameTimer.stop();
+        if (gameTimer != null) {
+            gameTimer.stop();
+        }
     }
 
     private void addKeyListener() {
@@ -88,10 +96,10 @@ public class GamePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.LIGHT_GRAY);
-        ball = new Ellipse2D.Double(x, y, ballSize, ballSize);
+        Ellipse2D ball = new Ellipse2D.Double(ballX, ballY, ballSize, ballSize);
         g2d.fill(ball);
 
-        g2d.setColor(Color.LIGHT_GRAY);
+        g2d.setColor(Color.BLACK);
         g2d.fillRect(paddleX, paddleY, paddleW, paddleH);
     }
 

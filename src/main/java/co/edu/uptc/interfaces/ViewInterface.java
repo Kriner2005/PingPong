@@ -11,7 +11,4 @@ public interface ViewInterface {
             int paddleX, int paddleY, int paddleW, int paddleH);
 
     void addComponents();
-
-    int getWidth();
-    int getHeight();
 }

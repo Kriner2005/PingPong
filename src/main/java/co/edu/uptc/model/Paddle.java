@@ -13,20 +13,22 @@ public class Paddle {
         this.speed = speed;
     }
 
-    public void moveUp(int height) {
+    public void moveUp(int panelHeight) {
         if (y > 0)
             y -= speed;
     }
 
-    public void moveDown(int height) {
-        if (y > 0)
+    public void moveDown(int panelHeight) {
+        if (y + this.height < panelHeight)
             y += speed;
     }
 
     public boolean collidesWithBall(Ball ball) {
-        boolean control = false;
-        control = ball.getX() + ball.getSize() >= x && ball.getX() <= x + width && ball.getY() + ball.getSize() >= y && ball.getY() <= y + height;
-        return control;
+
+        return ball.getX() + ball.getSize() >= x &&
+                ball.getX() <= x + width &&
+                ball.getY() + ball.getSize() >= y &&
+                ball.getY() <= y + height;
     }
 
     public int getX() {
@@ -44,7 +46,5 @@ public class Paddle {
     public int getHeight() {
         return height;
     }
-
-    
 
 }

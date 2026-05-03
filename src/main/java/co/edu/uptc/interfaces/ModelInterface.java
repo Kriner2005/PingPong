@@ -11,6 +11,8 @@ public interface ModelInterface {
     public void movePaddleDown();
 
     public void resetGame();
+
+    void initialize();
     
     public Ball getBall();
     public Paddle getPaddle();

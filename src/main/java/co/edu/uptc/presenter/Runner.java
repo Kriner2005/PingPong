@@ -11,24 +11,21 @@ public class Runner {
     private PresenterInterface presenter;
     private ViewInterface view;
 
+    private static final int PANEL_WIDTH = 950;
+    private static final int PANEL_HEIGHT = 800;
+
     public void makeMVP() {
-
-        int panelWidth = 950;
-        int panelHeight = 800;
-
         model = new Game();
         presenter = new Presenter();
         view = MainFrame.getInstance();
 
-        view.setPresenter(presenter);
-        model.setPanelHeight(panelHeight);
-        model.setPanelWidth(panelWidth);
+        model.setPanelHeight(PANEL_HEIGHT);
+        model.setPanelWidth(PANEL_WIDTH);
+        model.initialize();
 
+        view.setPresenter(presenter);
         presenter.setModel(model);
         presenter.setView(view);
-
-        ((Game)model).initialize();
-
     }
 
     public void run() {
