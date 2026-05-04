@@ -21,7 +21,10 @@ public class Game implements ModelInterface {
     @Override
     public void update() {
         ball.update(panelWidth, panelHeight);
-
+        if (paddle.collidesWithBall(ball)) {
+            ball.setDx(- ball.getDx());
+            //ball.setDy(- ball.getDy());
+        }
         if (ball.getX() < 0) {
             resetGame();
         }

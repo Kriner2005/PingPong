@@ -38,8 +38,24 @@ public class Ball {
         return y;
     }
 
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
     public int getSize() {
         return size;
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+    
+    public void setDy(int dy) {
+        this.dy = dy;
     }
 
 }
