@@ -15,11 +15,13 @@ import co.edu.uptc.interfaces.ViewInterface;
 import co.edu.uptc.view.dialogs.DiaAbout;
 import co.edu.uptc.view.dialogs.GameOverDia;
 import co.edu.uptc.view.panels.GamePanel;
+import co.edu.uptc.view.panels.StatsPanel;
 
 public class MainFrame extends JFrame implements ViewInterface {
     private static MainFrame instance;
     private PresenterInterface presenter;
     private GamePanel gamePanel;
+    private StatsPanel statsPanel;
 
     private MainFrame() {
         initFrame();
@@ -92,10 +94,9 @@ public class MainFrame extends JFrame implements ViewInterface {
     }
 
     private void addPanelStats() {
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(250, 800));
-        panel.setBackground(Color.blue);
-        add(panel, BorderLayout.EAST);
+        statsPanel = new StatsPanel();
+
+        add(statsPanel, BorderLayout.EAST);
     }
 
     @Override
@@ -109,7 +110,7 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void showGameOverDialog() {
         GameOverDia dialog = new GameOverDia(this);
         dialog.setVisible(true);
-        
+
         if (dialog.getRestart()) {
             presenter.restartGame();
         }
