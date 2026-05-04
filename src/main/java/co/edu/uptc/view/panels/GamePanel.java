@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 
     private void initPanel() {
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-        this.setBackground(Color.WHITE);
+        this.setBackground(Color.BLACK);
         this.setFocusable(true);
 
         gameTimer = new Timer(TIMER_DELAY, e -> updateGameLoop());
@@ -98,7 +98,7 @@ public class GamePanel extends JPanel {
         Ellipse2D ball = new Ellipse2D.Double(ballX, ballY, ballSize, ballSize);
         g2d.fill(ball);
 
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(Color.WHITE);
         g2d.fillRect(paddleX, paddleY, paddleW, paddleH);
     }
 

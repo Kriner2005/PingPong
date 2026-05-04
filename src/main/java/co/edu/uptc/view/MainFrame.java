@@ -110,7 +110,6 @@ public class MainFrame extends JFrame implements ViewInterface {
         GameOverDia dialog = new GameOverDia(this);
         dialog.setVisible(true);
         
-        // ← Si usuario eligió continuar, reiniciar
         if (dialog.getRestart()) {
             presenter.restartGame();
         }
