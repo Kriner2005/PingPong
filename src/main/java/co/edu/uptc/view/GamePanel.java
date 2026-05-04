@@ -106,4 +106,14 @@ public class GamePanel extends JPanel {
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
     }
+
+    @Override
+    public int getHeight() {
+        return super.getHeight(); // Devuelve la altura REAL del panel
+    }
+
+    @Override
+    public int getWidth() {
+        return super.getWidth(); // Devuelve el ancho REAL del panel
+    }
 }

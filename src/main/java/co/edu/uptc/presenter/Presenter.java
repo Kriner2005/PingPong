@@ -11,6 +11,9 @@ public class Presenter implements PresenterInterface {
 
     @Override
     public void update() {
+        model.setPanelWidth(view.getGamePanelWidth());
+        model.setPanelHeight(view.getGamePanelHeight());
+
         model.update();
         view.updateGameView(  model.getBall().getX(),
             model.getBall().getY(),

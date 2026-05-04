@@ -12,7 +12,7 @@ public interface ModelInterface {
 
     public void resetGame();
 
-    void initialize();
+    void initialize(int width, int height);
     
     public Ball getBall();
     public Paddle getPaddle();

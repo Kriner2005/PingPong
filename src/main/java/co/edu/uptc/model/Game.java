@@ -8,10 +8,13 @@ public class Game implements ModelInterface {
     private int panelWidth, panelHeight;
 
     @Override
-    public void initialize() {
+    public void initialize(int width, int height) {
+        this.panelWidth = width;
+        this.panelHeight = height;
+
         if (panelWidth > 0 && panelHeight > 0) {
             this.ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 10, -10);
-            this.paddle = new Paddle(50, panelHeight / 2 - 50, 20, 100, 10);
+            this.paddle = new Paddle(50, panelHeight / 2 - 50, 20, 150, 15);
         }
     }
 
