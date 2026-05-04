@@ -1,14 +1,10 @@
 package co.edu.uptc.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
@@ -95,7 +91,6 @@ public class MainFrame extends JFrame implements ViewInterface {
 
     private void addPanelStats() {
         statsPanel = new StatsPanel();
-
         add(statsPanel, BorderLayout.EAST);
     }
 
@@ -110,7 +105,7 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void showGameOverDialog() {
         GameOverDia dialog = new GameOverDia(this);
         dialog.setVisible(true);
-
+        
         if (dialog.getRestart()) {
             presenter.restartGame();
         }
