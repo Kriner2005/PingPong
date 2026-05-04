@@ -12,20 +12,17 @@ public class Game implements ModelInterface {
         this.panelWidth = width;
         this.panelHeight = height;
 
-        if (panelWidth > 0 && panelHeight > 0) {
-            this.ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 10, -10);
-            this.paddle = new Paddle(50, panelHeight / 2 - 50, 20, 150, 15);
-        }
+        this.ball = new Ball(width / 2, height / 2, 40, 45, 7);
+        this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
     }
 
     @Override
     public void update() {
         ball.update(panelWidth, panelHeight);
         if (paddle.collidesWithBall(ball)) {
-            ball.setDx(- ball.getDx());
-            //ball.setDy(- ball.getDy());
+            ball.bounceOffPaddle(paddle);
         }
-        if (ball.getX() < 0) {
+        if (ball.getX() <= 0) {
             resetGame();
         }
     }
@@ -42,7 +39,7 @@ public class Game implements ModelInterface {
 
     @Override
     public void resetGame() {
-        ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 5, -5);
+        ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 45, 7);
     }
 
     @Override

@@ -2,60 +2,68 @@ package co.edu.uptc.model;
 
 public class Ball {
 
-    private int x, y;
-    private int dx, dy;
+    private double x, y;
+    private double angle;
+    private double speed;
     private int size;
 
-    public Ball(int initialX, int initialY, int size, int dx, int dy) {
+    public Ball(int initialX, int initialY, int size, double angle, double speed) {
         this.x = initialX;
         this.y = initialY;
-        this.dx = dx;
-        this.dy = dy;
+        this.angle = angle;
+        this.speed = speed;
         this.size = size;
     }
 
     public void update(int width, int height) {
-        x += dx;
-        y += dy;
+        double movimientoX = Math.cos(Math.toRadians(angle)) * speed;
+        double movimientoY = Math.sin(Math.toRadians(angle)) * speed;
+
+        x += movimientoX;
+        y += movimientoY;
 
         if (x <= 0 || x + size >= width) {
-            x = Math.max(0, Math.min(x, width - size)); 
-            dx = -dx;
+            x = Math.max(0, Math.min(x, width - size));
+            angle = 180 - angle; // Invertir horizontalmente
         }
 
         if (y <= 0 || y + size >= height) {
-            y = Math.max(0, Math.min(y, height- size));
-            dy = -dy;
+            y = Math.max(0, Math.min(y, height - size));
+            angle = -angle; // Invertir verticalmente
         }
-
     }
 
-    public int getX() {
+    public void bounceOffPaddle(Paddle paddle) {
+
+        double distanciaDesdeArriba = this.y - paddle.getY();
+        double proporcion = distanciaDesdeArriba / paddle.getHeight();
+
+        proporcion = Math.max(0, Math.min(1, proporcion));
+
+        angle = -60 + (proporcion * 120);
+    }
+
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getDx() {
-        return dx;
-    }
-
-    public int getDy() {
-        return dy;
+    public double getDy() {
+        return y;
     }
 
     public int getSize() {
         return size;
-    }
-
-    public void setDx(int dx) {
-        this.dx = dx;
-    }
+    }    
     
-    public void setDy(int dy) {
-        this.dy = dy;
-    }
+    public double getAngle() {
+        return angle;
+    }    
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }    
 
 }
