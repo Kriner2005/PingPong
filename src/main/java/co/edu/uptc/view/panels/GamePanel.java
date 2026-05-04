@@ -1,4 +1,4 @@
-package co.edu.uptc.view;
+package co.edu.uptc.view.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,7 +25,6 @@ public class GamePanel extends JPanel {
     private double ballX, ballY;
     private int ballSize;
     private int paddleX, paddleY, paddleW, paddleH;
-    // private Ellipse2D ball;
 
     public GamePanel() {
         initPanel();

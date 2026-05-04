@@ -12,6 +12,8 @@ public interface ModelInterface {
 
     public void resetGame();
 
+    public boolean isGameOver();
+
     void initialize(int width, int height);
     
     public Ball getBall();

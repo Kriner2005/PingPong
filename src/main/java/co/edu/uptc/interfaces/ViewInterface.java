@@ -12,6 +12,9 @@ public interface ViewInterface {
 
     void addComponents();
 
-    int getGamePanelWidth(); 
+    void showGameOverDialog();
+
+    int getGamePanelWidth();
+
     int getGamePanelHeight();
 }

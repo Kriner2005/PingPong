@@ -1,4 +1,4 @@
-package co.edu.uptc.view;
+package co.edu.uptc.view.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

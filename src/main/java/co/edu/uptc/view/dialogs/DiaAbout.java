@@ -1,4 +1,4 @@
-package co.edu.uptc.view;
+package co.edu.uptc.view.dialogs;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;

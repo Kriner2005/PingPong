@@ -6,12 +6,13 @@ public class Game implements ModelInterface {
     private Ball ball;
     private Paddle paddle;
     private int panelWidth, panelHeight;
+    private boolean gameOver;
 
     @Override
     public void initialize(int width, int height) {
         this.panelWidth = width;
         this.panelHeight = height;
-
+        this.gameOver = false;
         this.ball = new Ball(width / 2, height / 2, 40, 45, 7);
         this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
     }
@@ -23,7 +24,7 @@ public class Game implements ModelInterface {
             ball.bounceOffPaddle(paddle);
         }
         if (ball.getX() <= 0) {
-            resetGame();
+            gameOver = true;
         }
     }
 
@@ -39,7 +40,12 @@ public class Game implements ModelInterface {
 
     @Override
     public void resetGame() {
-        ball = new Ball(panelWidth / 2, panelHeight / 2, 40, 45, 7);
+        initialize(panelWidth, panelHeight);
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return gameOver;
     }
 
     @Override

@@ -11,4 +11,5 @@ public interface PresenterInterface {
 
     void movePaddleDown();
 
+    void restartGame();
 }

@@ -15,13 +15,17 @@ public class Presenter implements PresenterInterface {
         model.setPanelHeight(view.getGamePanelHeight());
 
         model.update();
-        view.updateGameView(  model.getBall().getX(),
-            model.getBall().getY(),
-            model.getBall().getSize(),
-            model.getPaddle().getX(),
-            model.getPaddle().getY(),
-            model.getPaddle().getWidth(),
-            model.getPaddle().getHeight());
+        if (model.isGameOver()) {
+            view.showGameOverDialog();
+            return;
+        }
+        view.updateGameView(model.getBall().getX(),
+                model.getBall().getY(),
+                model.getBall().getSize(),
+                model.getPaddle().getX(),
+                model.getPaddle().getY(),
+                model.getPaddle().getWidth(),
+                model.getPaddle().getHeight());
     }
 
     @Override
@@ -32,6 +36,11 @@ public class Presenter implements PresenterInterface {
     @Override
     public void movePaddleDown() {
         model.movePaddleDown();
+    }
+
+    @Override
+    public void restartGame() {
+        model.resetGame();
     }
 
     @Override

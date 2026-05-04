@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
+import co.edu.uptc.view.dialogs.DiaAbout;
+import co.edu.uptc.view.dialogs.GameOverDia;
+import co.edu.uptc.view.panels.GamePanel;
 
 public class MainFrame extends JFrame implements ViewInterface {
     private static MainFrame instance;
@@ -95,16 +98,22 @@ public class MainFrame extends JFrame implements ViewInterface {
         add(panel, BorderLayout.EAST);
     }
 
-    public void addGameOverDialog() {
-        GameOverDia goDia = new GameOverDia(this);
-        add(goDia);
-    }
-
     @Override
     public void updateGameView(double ballX, double ballY, int ballSize,
             int paddleX, int paddleY, int paddleW, int paddleH) {
 
         gamePanel.upDateGameView(ballX, ballY, ballSize, paddleX, paddleY, paddleW, paddleH);
+    }
+
+    @Override
+    public void showGameOverDialog() {
+        GameOverDia dialog = new GameOverDia(this);
+        dialog.setVisible(true);
+        
+        // ← Si usuario eligió continuar, reiniciar
+        if (dialog.getRestart()) {
+            presenter.restartGame();
+        }
     }
 
     @Override
