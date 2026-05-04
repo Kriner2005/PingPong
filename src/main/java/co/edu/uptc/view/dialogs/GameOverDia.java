@@ -35,8 +35,7 @@ public class GameOverDia extends JDialog {
         addLabel(box);
 
         box.add(Box.createVerticalStrut(20));
-        addBtn(box);
-
+        addButtonsContainer(box);
         box.add(Box.createVerticalGlue());
 
         add(box, BorderLayout.CENTER);
@@ -48,11 +47,30 @@ public class GameOverDia extends JDialog {
         container.add(label);
     }
 
-    private void addBtn(Box container) {
+    private void addButtonsContainer(Box verticalContainer) {
+        Box boxHorizontal = Box.createHorizontalBox();
+        boxHorizontal.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        addBtnAccept(boxHorizontal);
+        boxHorizontal.add(Box.createHorizontalStrut(20)); // Espacio entre botones
+        addBtnDecline(boxHorizontal);
+
+        verticalContainer.add(boxHorizontal);
+    }
+
+    private void addBtnAccept(Box container) {
         JButton btn = new JButton("Aceptar");
-        btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         btn.addActionListener(e -> {
             restart = true;
+            dispose();
+        });
+        container.add(btn);
+    }
+
+    private void addBtnDecline(Box container) {
+        JButton btn = new JButton("Cancelar");
+        btn.addActionListener(e -> {
+            restart = false;
             dispose();
         });
         container.add(btn);

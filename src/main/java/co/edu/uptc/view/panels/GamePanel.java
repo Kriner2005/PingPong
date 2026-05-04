@@ -108,11 +108,11 @@ public class GamePanel extends JPanel {
 
     @Override
     public int getHeight() {
-        return super.getHeight(); // Devuelve la altura REAL del panel
+        return super.getHeight();
     }
 
     @Override
     public int getWidth() {
-        return super.getWidth(); // Devuelve el ancho REAL del panel
+        return super.getWidth();
     }
 }
