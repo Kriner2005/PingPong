@@ -14,8 +14,14 @@ public class Presenter implements PresenterInterface {
         model.setPanelWidth(view.getGamePanelWidth());
         model.setPanelHeight(view.getGamePanelHeight());
 
+        if (model.isPaused())
+            return;
+
         model.update();
+
         if (model.isGameOver()) {
+            model.setPaused(true);
+            model.resetGameOverFlag();
             view.showGameOverDialog();
             return;
         }
@@ -41,6 +47,11 @@ public class Presenter implements PresenterInterface {
     @Override
     public void restartGame() {
         model.resetGame();
+    }
+
+    @Override
+    public void pauseGame() {
+        model.setPaused(true);
     }
 
     @Override

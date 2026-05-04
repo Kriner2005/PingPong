@@ -12,13 +12,21 @@ public interface ModelInterface {
 
     public void resetGame();
 
+    public void resetGameOverFlag();
+
     public boolean isGameOver();
 
     void initialize(int width, int height);
-    
+
     public Ball getBall();
+
     public Paddle getPaddle();
 
     public void setPanelWidth(int width);
+
     public void setPanelHeight(int height);
+
+    public boolean isPaused();
+
+    public void setPaused(boolean paused);
 }

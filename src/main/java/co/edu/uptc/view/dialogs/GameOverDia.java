@@ -42,7 +42,7 @@ public class GameOverDia extends JDialog {
     }
 
     private void addLabel(Box container) {
-        JLabel label = new JLabel("Perdiste, ¿Quiere volver a jugar?");
+        JLabel label = new JLabel("Perdiste, ¿Quieres volver a jugar?");
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         container.add(label);
     }
@@ -52,7 +52,7 @@ public class GameOverDia extends JDialog {
         boxHorizontal.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         addBtnAccept(boxHorizontal);
-        boxHorizontal.add(Box.createHorizontalStrut(20)); // Espacio entre botones
+        boxHorizontal.add(Box.createHorizontalStrut(20));
         addBtnDecline(boxHorizontal);
 
         verticalContainer.add(boxHorizontal);
