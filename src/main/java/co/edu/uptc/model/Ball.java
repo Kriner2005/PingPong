@@ -16,11 +16,11 @@ public class Ball {
     }
 
     public void update(int width, int height) {
-        double movimientoX = Math.cos(Math.toRadians(angle)) * speed;
-        double movimientoY = Math.sin(Math.toRadians(angle)) * speed;
+        double movingX = Math.cos(Math.toRadians(angle)) * speed;
+        double movingY = Math.sin(Math.toRadians(angle)) * speed;
 
-        x += movimientoX;
-        y += movimientoY;
+        x += movingX;
+        y += movingY;
 
         if (x <= 0 || x + size >= width) {
             x = Math.max(0, Math.min(x, width - size));

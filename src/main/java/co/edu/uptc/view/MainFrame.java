@@ -95,6 +95,11 @@ public class MainFrame extends JFrame implements ViewInterface {
         add(panel, BorderLayout.EAST);
     }
 
+    public void addGameOverDialog() {
+        GameOverDia goDia = new GameOverDia(this);
+        add(goDia);
+    }
+
     @Override
     public void updateGameView(double ballX, double ballY, int ballSize,
             int paddleX, int paddleY, int paddleW, int paddleH) {
