@@ -9,10 +9,10 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Window;
 
-public class DiaAbout extends JDialog {
+public class AboutDia extends JDialog {
     private final Window window;
 
-    public DiaAbout(Window window) {
+    public AboutDia(Window window) {
         super(window, "About", ModalityType.APPLICATION_MODAL);
         this.window = window;
         initDialog();

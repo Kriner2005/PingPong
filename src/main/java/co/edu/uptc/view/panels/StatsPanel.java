@@ -11,10 +11,15 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import co.edu.uptc.interfaces.PresenterInterface;
+
 public class StatsPanel extends JPanel {
+    private PresenterInterface presenter;
+
     private JLabel timer;
     private JLabel startTimeGame;
     private ArrayList<JLabel> numBounces;
+    private Box bouncesContainer;
     private boolean start;
     private boolean paused;
     private boolean addBall;
@@ -39,6 +44,13 @@ public class StatsPanel extends JPanel {
         addTimerLabel(labelsContainer);
         labelsContainer.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
+        bouncesContainer = Box.createVerticalBox();
+        bouncesContainer.add(Box.createVerticalStrut(20));
+        JLabel titleBounces = new JLabel("Rebotes por pelota:");
+        bouncesContainer.add(titleBounces);
+        bouncesContainer.add(Box.createVerticalStrut(10));
+        labelsContainer.add(bouncesContainer);
+
         Box btnContainer = Box.createVerticalBox();
         addBtnAddBall(btnContainer);
         btnContainer.add(Box.createVerticalStrut(20));
@@ -46,7 +58,7 @@ public class StatsPanel extends JPanel {
         btnContainer.add(Box.createVerticalStrut(20));
         addBtnReset(btnContainer);
 
-        //contenedor central
+        // contenedor central
         Box mainBox = Box.createVerticalBox();
         mainBox.add(Box.createVerticalStrut(20));
         mainBox.add(labelsContainer);
@@ -55,6 +67,24 @@ public class StatsPanel extends JPanel {
         mainBox.add(Box.createVerticalStrut(20));
 
         add(mainBox, BorderLayout.CENTER);
+    }
+
+    // Cuando se agrega una pelota
+    public void addBallBounceLabel(int ballIndex) {
+        JLabel label = new JLabel("Pelota " + (ballIndex + 1) + ": 0 rebotes");
+        numBounces.add(label);
+        bouncesContainer.add(label);
+
+        // Redibujar para ver cambios
+        revalidate();
+        repaint();
+    }
+
+    // Actualizar contador (llamar cada frame)
+    public void updateBallBounces(int ballIndex, int bounceCount) {
+        if (ballIndex < numBounces.size()) {
+            numBounces.get(ballIndex).setText("Pelota " + (ballIndex + 1) + ": " + bounceCount + " rebotes");
+        }
     }
 
     private void addTimerLabel(Box boxLabels) {
@@ -84,6 +114,10 @@ public class StatsPanel extends JPanel {
     private void addBtnPaused(Box box) {
         JButton btnPaused = new JButton("Pausar");
         btnPaused.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnPaused.addActionListener(e -> {
+            presenter.pauseGame();
+            btnPaused.setText("Despausar");
+        });
         box.add(btnPaused);
     }
 
@@ -91,5 +125,10 @@ public class StatsPanel extends JPanel {
         JButton btnAddBall = new JButton("Agregar peltota");
         btnAddBall.setAlignmentX(Component.CENTER_ALIGNMENT);
         box.add(btnAddBall);
+
+    }
+
+    public void setPresenter(PresenterInterface presenter) {
+        this.presenter = presenter;
     }
 }

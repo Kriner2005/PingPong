@@ -51,7 +51,10 @@ public class Presenter implements PresenterInterface {
 
     @Override
     public void pauseGame() {
-        model.setPaused(true);
+        if (!model.isGameOver()) {
+            boolean currentState = model.isPaused();
+            model.setPaused(!currentState); // ← Invierte el estado
+        }
     }
 
     @Override

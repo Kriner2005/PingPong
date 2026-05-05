@@ -8,7 +8,7 @@ import javax.swing.JMenuItem;
 
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
-import co.edu.uptc.view.dialogs.DiaAbout;
+import co.edu.uptc.view.dialogs.AboutDia;
 import co.edu.uptc.view.dialogs.GameOverDia;
 import co.edu.uptc.view.panels.GamePanel;
 import co.edu.uptc.view.panels.StatsPanel;
@@ -35,6 +35,7 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
         gamePanel.setPresenter(presenter);
+        statsPanel.setPresenter(presenter);
     }
 
     @Override
@@ -77,7 +78,7 @@ public class MainFrame extends JFrame implements ViewInterface {
         JMenuItem menuItem = new JMenuItem("About");
         menu.add(menuItem);
         menuItem.addActionListener(a -> {
-            new DiaAbout(this).setVisible(true);
+            new AboutDia(this).setVisible(true);
         });
 
     }
