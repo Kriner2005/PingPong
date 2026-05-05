@@ -1,5 +1,7 @@
 package co.edu.uptc.interfaces;
 
+import java.util.ArrayList;
+
 import co.edu.uptc.model.Ball;
 import co.edu.uptc.model.Paddle;
 
@@ -18,7 +20,7 @@ public interface ModelInterface {
 
     void initialize(int width, int height);
 
-    public Ball getBall();
+    public ArrayList<Ball> getBalls();
 
     public Paddle getPaddle();
 

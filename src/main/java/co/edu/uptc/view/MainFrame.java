@@ -1,6 +1,8 @@
 package co.edu.uptc.view;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -8,6 +10,8 @@ import javax.swing.JMenuItem;
 
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
+import co.edu.uptc.model.Ball;
+import co.edu.uptc.model.Paddle;
 import co.edu.uptc.view.dialogs.AboutDia;
 import co.edu.uptc.view.dialogs.GameOverDia;
 import co.edu.uptc.view.panels.GamePanel;
@@ -107,10 +111,9 @@ public class MainFrame extends JFrame implements ViewInterface {
     }
 
     @Override
-    public void updateGameView(double ballX, double ballY, int ballSize,
-            int paddleX, int paddleY, int paddleW, int paddleH) {
+    public void updateGameView(ArrayList<Ball> balls, Paddle paddle) {
 
-        gamePanel.upDateGameView(ballX, ballY, ballSize, paddleX, paddleY, paddleW, paddleH);
+        gamePanel.upDateGameView(balls,paddle);
     }
 
     @Override

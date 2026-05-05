@@ -6,7 +6,6 @@ import co.edu.uptc.interfaces.ModelInterface;
 
 public class Game implements ModelInterface {
     private ArrayList<Ball> balls;
-    private Ball ball;
     private Paddle paddle;
     private int panelWidth, panelHeight;
     private boolean gameOver;
@@ -20,7 +19,6 @@ public class Game implements ModelInterface {
         this.paused = false;
         this.balls = new ArrayList<>();
         balls.add(new Ball(width / 2, height / 2, 40, 45, 7));
-        this.ball = new Ball(width / 2, height / 2, 40, 45, 7);
         this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
     }
 
@@ -28,12 +26,14 @@ public class Game implements ModelInterface {
     public void update() {
         if (paused) return;
         
-        ball.update(panelWidth, panelHeight);
+        for (Ball ball : balls) {
+            ball.update(panelWidth, panelHeight);
         if (paddle.collidesWithBall(ball)) {
             ball.bounceOffPaddle(paddle);
         }
         if (ball.getX() <= 0) {
             gameOver = true;
+        }
         }
     }
 
@@ -63,8 +63,8 @@ public class Game implements ModelInterface {
     }
 
     @Override
-    public Ball getBall() {
-        return ball;
+    public ArrayList<Ball> getBalls() {
+        return balls;
     }
 
     @Override

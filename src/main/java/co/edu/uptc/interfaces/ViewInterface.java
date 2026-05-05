@@ -1,5 +1,9 @@
 package co.edu.uptc.interfaces;
 
+import java.util.ArrayList;
+
+import co.edu.uptc.model.Ball;
+import co.edu.uptc.model.Paddle;
 import co.edu.uptc.view.panels.GamePanel;
 
 public interface ViewInterface {
@@ -9,8 +13,7 @@ public interface ViewInterface {
 
     void initFrame();
 
-    void updateGameView(double ballX, double ballY, int ballSize,
-            int paddleX, int paddleY, int paddleW, int paddleH);
+    void updateGameView(ArrayList<Ball> balls, Paddle paddle);
 
     void updatePauseButton(boolean isPaused);
 

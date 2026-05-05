@@ -1,11 +1,13 @@
 package co.edu.uptc.presenter;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import co.edu.uptc.interfaces.ModelInterface;
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
+import co.edu.uptc.model.Ball;
 
 public class Presenter implements PresenterInterface {
 
@@ -55,13 +57,10 @@ public class Presenter implements PresenterInterface {
             view.showGameOverDialog();
             return;
         }
-        view.updateGameView(model.getBall().getX(),
-                model.getBall().getY(),
-                model.getBall().getSize(),
-                model.getPaddle().getX(),
-                model.getPaddle().getY(),
-                model.getPaddle().getWidth(),
-                model.getPaddle().getHeight());
+        ArrayList<Ball> balls = model.getBalls();
+
+        view.updateGameView(balls, model.getPaddle());
+
     }
 
     @Override

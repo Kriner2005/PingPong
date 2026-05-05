@@ -7,10 +7,13 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import co.edu.uptc.interfaces.PresenterInterface;
+import co.edu.uptc.model.Ball;
+import co.edu.uptc.model.Paddle;
 
 public class GamePanel extends JPanel {
 
@@ -19,9 +22,8 @@ public class GamePanel extends JPanel {
 
     private PresenterInterface presenter;
 
-    private double ballX, ballY;
-    private int ballSize;
-    private int paddleX, paddleY, paddleW, paddleH;
+    private ArrayList<Ball> balls;
+    private Paddle paddle;
 
     public GamePanel() {
         initPanel();
@@ -34,16 +36,9 @@ public class GamePanel extends JPanel {
         this.setFocusable(true);
     }
 
-    public void upDateGameView(double ballX, double ballY, int ballSize,
-            int paddleX, int paddleY, int paddleW, int paddleH) {
-        this.ballX = ballX;
-        this.ballY = ballY;
-        this.ballSize = ballSize;
-        this.paddleX = paddleX;
-        this.paddleY = paddleY;
-        this.paddleW = paddleW;
-        this.paddleH = paddleH;
-
+    public void upDateGameView(ArrayList<Ball> balls, Paddle paddle) {
+        this.balls = balls;
+        this.paddle = paddle;
     }
 
     private void addKeyListener() {
@@ -75,12 +70,18 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setColor(Color.LIGHT_GRAY);
-        Ellipse2D ball = new Ellipse2D.Double(ballX, ballY, ballSize, ballSize);
-        g2d.fill(ball);
+        if (balls != null) {
+            g2d.setColor(Color.LIGHT_GRAY);
+            for (Ball ball : balls) {
+                Ellipse2D ballShape = new Ellipse2D.Double(ball.getX(), ball.getY(), ball.getSize(), ball.getSize());
+                g2d.fill(ballShape);
+            }
+        }
 
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(paddleX, paddleY, paddleW, paddleH);
+        if (paddle != null) {
+            g2d.setColor(Color.WHITE);
+            g2d.fillRect(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight());
+        }
     }
 
     public void setPresenter(PresenterInterface presenter) {
