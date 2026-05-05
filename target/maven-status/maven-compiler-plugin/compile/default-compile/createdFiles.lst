@@ -1,0 +1,16 @@
+co\edu\uptc\interfaces\PresenterInterface.class
+co\edu\uptc\model\Paddle.class
+co\edu\uptc\Main.class
+co\edu\uptc\model\Ball.class
+co\edu\uptc\view\dialogs\AboutDia.class
+co\edu\uptc\presenter\Presenter.class
+co\edu\uptc\view\MainFrame.class
+co\edu\uptc\interfaces\ViewInterface.class
+co\edu\uptc\view\dialogs\GameOverDia.class
+co\edu\uptc\interfaces\ModelInterface.class
+co\edu\uptc\view\panels\GamePanel.class
+co\edu\uptc\presenter\Runner.class
+co\edu\uptc\view\MainFrame$1.class
+co\edu\uptc\view\panels\GamePanel$1.class
+co\edu\uptc\model\Game.class
+co\edu\uptc\view\panels\StatsPanel.class

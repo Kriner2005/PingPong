@@ -38,7 +38,6 @@ public class Presenter implements PresenterInterface {
         if (executor != null) {
             executor.shutdown();
         }
-        ;
     }
 
     @Override

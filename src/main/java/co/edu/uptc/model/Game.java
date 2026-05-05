@@ -1,8 +1,11 @@
 package co.edu.uptc.model;
 
+import java.util.ArrayList;
+
 import co.edu.uptc.interfaces.ModelInterface;
 
 public class Game implements ModelInterface {
+    private ArrayList<Ball> balls;
     private Ball ball;
     private Paddle paddle;
     private int panelWidth, panelHeight;
@@ -15,6 +18,8 @@ public class Game implements ModelInterface {
         this.panelHeight = height;
         this.gameOver = false;
         this.paused = false;
+        this.balls = new ArrayList<>();
+        balls.add(new Ball(width / 2, height / 2, 40, 45, 7));
         this.ball = new Ball(width / 2, height / 2, 40, 45, 7);
         this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
     }
