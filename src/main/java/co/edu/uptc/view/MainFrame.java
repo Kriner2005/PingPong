@@ -103,16 +103,22 @@ public class MainFrame extends JFrame implements ViewInterface {
     }
 
     @Override
+    public void updatePauseButton(boolean isPaused) {
+        statsPanel.updatePauseBtn(isPaused);
+    }
+
+    @Override
     public void showGameOverDialog() {
         GameOverDia dialog = new GameOverDia(this);
         dialog.setVisible(true);
-        
+
         if (dialog.getRestart()) {
             presenter.restartGame();
         }
 
     }
 
+    // gets
     @Override
     public int getGamePanelWidth() {
         return gamePanel.getWidth();

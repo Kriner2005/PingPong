@@ -16,12 +16,11 @@ public class Presenter implements PresenterInterface {
 
         if (model.isPaused())
             return;
-
+        view.updatePauseButton(model.isPaused());
         model.update();
 
         if (model.isGameOver()) {
             model.setPaused(true);
-            model.resetGameOverFlag();
             view.showGameOverDialog();
             return;
         }
@@ -46,6 +45,7 @@ public class Presenter implements PresenterInterface {
 
     @Override
     public void restartGame() {
+        model.resetGameOverFlag();
         model.resetGame();
     }
 
@@ -53,7 +53,7 @@ public class Presenter implements PresenterInterface {
     public void pauseGame() {
         if (!model.isGameOver()) {
             boolean currentState = model.isPaused();
-            model.setPaused(!currentState); // ← Invierte el estado
+            model.setPaused(!currentState);
         }
     }
 

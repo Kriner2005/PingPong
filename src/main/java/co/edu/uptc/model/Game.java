@@ -22,6 +22,7 @@ public class Game implements ModelInterface {
     @Override
     public void update() {
         if (paused) return;
+        
         ball.update(panelWidth, panelHeight);
         if (paddle.collidesWithBall(ball)) {
             ball.bounceOffPaddle(paddle);

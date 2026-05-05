@@ -10,6 +10,8 @@ public interface ViewInterface {
     void updateGameView(double ballX, double ballY, int ballSize,
             int paddleX, int paddleY, int paddleW, int paddleH);
 
+    void updatePauseButton(boolean isPaused);
+
     void addComponents();
 
     void showGameOverDialog();

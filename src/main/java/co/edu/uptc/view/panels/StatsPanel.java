@@ -19,6 +19,7 @@ public class StatsPanel extends JPanel {
     private JLabel timer;
     private JLabel startTimeGame;
     private ArrayList<JLabel> numBounces;
+    private JButton btnPaused;
     private Box bouncesContainer;
     private boolean start;
     private boolean paused;
@@ -112,13 +113,17 @@ public class StatsPanel extends JPanel {
     }
 
     private void addBtnPaused(Box box) {
-        JButton btnPaused = new JButton("Pausar");
+        btnPaused = new JButton("Pausar");
         btnPaused.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnPaused.addActionListener(e -> {
             presenter.pauseGame();
             btnPaused.setText("Despausar");
         });
         box.add(btnPaused);
+    }
+
+    public void updatePauseBtn(boolean isPaused) {
+        btnPaused.setText(isPaused ? "Despausar" : "Pausar");
     }
 
     private void addBtnAddBall(Box box) {
