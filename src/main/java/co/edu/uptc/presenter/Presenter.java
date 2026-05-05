@@ -1,5 +1,8 @@
 package co.edu.uptc.presenter;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import co.edu.uptc.interfaces.ModelInterface;
 import co.edu.uptc.interfaces.PresenterInterface;
 import co.edu.uptc.interfaces.ViewInterface;
@@ -8,6 +11,35 @@ public class Presenter implements PresenterInterface {
 
     private ViewInterface view;
     private ModelInterface model;
+
+    private ExecutorService executor;
+    private volatile boolean running = true;
+
+    @Override
+    public void startGameLoop() {
+        executor = Executors.newSingleThreadExecutor();
+        executor.submit(() -> {
+            while (running) {
+                try {
+                    update();
+                    view.getPanelGame().repaint();
+                    Thread.sleep(16);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+    }
+
+    @Override
+    public void stopGameLoop() {
+        running = false;
+        if (executor != null) {
+            executor.shutdown();
+        }
+        ;
+    }
 
     @Override
     public void update() {

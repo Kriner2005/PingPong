@@ -1,5 +1,7 @@
 package co.edu.uptc.interfaces;
 
+import co.edu.uptc.view.panels.GamePanel;
+
 public interface ViewInterface {
     void setPresenter(PresenterInterface presenter);
 
@@ -19,4 +21,6 @@ public interface ViewInterface {
     int getGamePanelWidth();
 
     int getGamePanelHeight();
+
+    GamePanel getPanelGame();
 }

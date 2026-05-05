@@ -15,7 +15,7 @@ public class Runner {
         model = new Game();
         presenter = new Presenter();
         view = MainFrame.getInstance();
-        model.initialize(950,800);
+        model.initialize(950, 800);
 
         view.setPresenter(presenter);
         presenter.setModel(model);
@@ -25,5 +25,6 @@ public class Runner {
     public void run() {
         makeMVP();
         view.start();
+        presenter.startGameLoop();    
     }
 }

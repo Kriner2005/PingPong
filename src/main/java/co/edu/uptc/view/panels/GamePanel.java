@@ -9,7 +9,6 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import co.edu.uptc.interfaces.PresenterInterface;
 
@@ -17,10 +16,8 @@ public class GamePanel extends JPanel {
 
     private static final int PANEL_WIDTH = 950;
     private static final int PANEL_HEIGHT = 800;
-    private static final int TIMER_DELAY = 16;
 
     private PresenterInterface presenter;
-    private Timer gameTimer;
 
     private double ballX, ballY;
     private int ballSize;
@@ -35,16 +32,6 @@ public class GamePanel extends JPanel {
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setFocusable(true);
-
-        gameTimer = new Timer(TIMER_DELAY, e -> updateGameLoop());
-        gameTimer.start();
-    }
-
-    private void updateGameLoop() {
-        if (presenter != null) {
-            presenter.update();
-            repaint();
-        }
     }
 
     public void upDateGameView(double ballX, double ballY, int ballSize,
@@ -57,12 +44,6 @@ public class GamePanel extends JPanel {
         this.paddleW = paddleW;
         this.paddleH = paddleH;
 
-    }
-
-    public void stopGame() {
-        if (gameTimer != null) {
-            gameTimer.stop();
-        }
     }
 
     private void addKeyListener() {

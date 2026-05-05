@@ -50,7 +50,17 @@ public class MainFrame extends JFrame implements ViewInterface {
         setLayout(new BorderLayout());
         setTitle("Ping Pong Game");
         // setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                // Parar el game loop del presenter
+                if (presenter != null) {
+                    presenter.stopGameLoop();
+                }
+                System.exit(0);
+            }
+        });
     }
 
     // adds
@@ -128,5 +138,10 @@ public class MainFrame extends JFrame implements ViewInterface {
     @Override
     public int getGamePanelHeight() {
         return gamePanel.getHeight();
+    }
+
+    @Override
+    public GamePanel getPanelGame() {
+        return gamePanel;
     }
 }
