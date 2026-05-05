@@ -50,6 +50,7 @@ public class Presenter implements PresenterInterface {
         if (model.isPaused())
             return;
         view.updatePauseButton(model.isPaused());
+        view.updateStartTime(model.getStartTime()); // ← NUEVO
         model.update();
 
         if (model.isGameOver()) {
@@ -73,7 +74,7 @@ public class Presenter implements PresenterInterface {
         model.movePaddleDown();
     }
 
-        @Override
+    @Override
     public void addBall() {
         model.addBall();
     }

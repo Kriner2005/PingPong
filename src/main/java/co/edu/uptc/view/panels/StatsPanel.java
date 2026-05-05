@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -135,6 +137,13 @@ public class StatsPanel extends JPanel {
         });
         box.add(btnAddBall);
 
+    }
+
+    public void updateStartTime(LocalDateTime startTime) {
+        if (startTime != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            startTimeGame.setText(startTime.format(formatter));
+        }
     }
 
     public void setPresenter(PresenterInterface presenter) {

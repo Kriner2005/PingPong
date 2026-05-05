@@ -1,5 +1,6 @@
 package co.edu.uptc.interfaces;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import co.edu.uptc.model.Ball;
@@ -25,6 +26,8 @@ public interface ModelInterface {
     public ArrayList<Ball> getBalls();
 
     public Paddle getPaddle();
+
+    public LocalDateTime getStartTime();
 
     public void setPanelWidth(int width);
 

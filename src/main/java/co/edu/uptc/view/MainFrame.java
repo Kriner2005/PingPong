@@ -1,6 +1,7 @@
 package co.edu.uptc.view;
 
 import java.awt.BorderLayout;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -113,12 +114,17 @@ public class MainFrame extends JFrame implements ViewInterface {
     @Override
     public void updateGameView(ArrayList<Ball> balls, Paddle paddle) {
 
-        gamePanel.upDateGameView(balls,paddle);
+        gamePanel.upDateGameView(balls, paddle);
     }
 
     @Override
     public void updatePauseButton(boolean isPaused) {
         statsPanel.updatePauseBtn(isPaused);
+    }
+
+    @Override
+    public void updateStartTime(LocalDateTime startTime) {
+        statsPanel.updateStartTime(startTime);
     }
 
     @Override

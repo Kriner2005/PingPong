@@ -1,5 +1,6 @@
 package co.edu.uptc.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import co.edu.uptc.interfaces.ModelInterface;
@@ -10,6 +11,7 @@ public class Game implements ModelInterface {
     private int panelWidth, panelHeight;
     private boolean gameOver;
     private boolean paused;
+    private LocalDateTime startTime;
 
     @Override
     public void initialize(int width, int height) {
@@ -17,6 +19,7 @@ public class Game implements ModelInterface {
         this.panelHeight = height;
         this.gameOver = false;
         this.paused = false;
+        this.startTime = LocalDateTime.now(); // ← Registrar hora
         this.balls = new ArrayList<>();
         balls.add(new Ball(width / 2, height / 2, 40, 45, 7));
         this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
@@ -24,16 +27,17 @@ public class Game implements ModelInterface {
 
     @Override
     public void update() {
-        if (paused) return;
-        
+        if (paused)
+            return;
+
         for (Ball ball : balls) {
             ball.update(panelWidth, panelHeight);
-        if (paddle.collidesWithBall(ball)) {
-            ball.bounceOffPaddle(paddle);
-        }
-        if (ball.getX() <= 0) {
-            gameOver = true;
-        }
+            if (paddle.collidesWithBall(ball)) {
+                ball.bounceOffPaddle(paddle);
+            }
+            if (ball.getX() <= 0) {
+                gameOver = true;
+            }
         }
     }
 
@@ -78,11 +82,16 @@ public class Game implements ModelInterface {
     }
 
     @Override
-    public boolean isPaused(){
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    @Override
+    public boolean isPaused() {
         return paused;
     }
 
-    @Override 
+    @Override
     public void setPaused(boolean paused) {
         this.paused = paused;
     }

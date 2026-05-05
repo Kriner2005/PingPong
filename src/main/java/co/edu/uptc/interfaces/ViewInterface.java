@@ -1,5 +1,6 @@
 package co.edu.uptc.interfaces;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import co.edu.uptc.model.Ball;
@@ -20,6 +21,8 @@ public interface ViewInterface {
     void addComponents();
 
     void showGameOverDialog();
+
+    void updateStartTime(LocalDateTime startTime);
 
     int getGamePanelWidth();
 
