@@ -92,6 +92,7 @@ public class MainFrame extends JFrame implements ViewInterface {
 
     private void addPanelStats() {
         statsPanel = new StatsPanel();
+        statsPanel.setGameReference(gamePanel);
         add(statsPanel, BorderLayout.EAST);
     }
 

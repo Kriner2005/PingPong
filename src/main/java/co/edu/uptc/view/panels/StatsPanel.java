@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import co.edu.uptc.interfaces.PresenterInterface;
+import co.edu.uptc.model.Game;
 
 public class StatsPanel extends JPanel {
     private PresenterInterface presenter;
@@ -21,6 +22,7 @@ public class StatsPanel extends JPanel {
     private ArrayList<JLabel> numBounces;
     private JButton btnPaused;
     private Box bouncesContainer;
+    private GamePanel gamePanel;
     private boolean start;
     private boolean paused;
     private boolean addBall;
@@ -109,6 +111,9 @@ public class StatsPanel extends JPanel {
     private void addBtnReset(Box box) {
         JButton btnreset = new JButton("Reiniciar");
         btnreset.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnreset.addActionListener(e -> {
+            gamePanel.requestFocus();
+        });
         box.add(btnreset);
     }
 
@@ -118,6 +123,7 @@ public class StatsPanel extends JPanel {
         btnPaused.addActionListener(e -> {
             presenter.pauseGame();
             btnPaused.setText("Despausar");
+            gamePanel.requestFocus();
         });
         box.add(btnPaused);
     }
@@ -129,11 +135,18 @@ public class StatsPanel extends JPanel {
     private void addBtnAddBall(Box box) {
         JButton btnAddBall = new JButton("Agregar peltota");
         btnAddBall.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnAddBall.addActionListener(e -> {
+            gamePanel.requestFocus();
+        });
         box.add(btnAddBall);
 
     }
 
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
+    }
+
+    public void setGameReference(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
     }
 }
