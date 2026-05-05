@@ -1,5 +1,6 @@
 package co.edu.uptc.interfaces;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public interface ViewInterface {
     void showGameOverDialog();
 
     void updateStartTime(LocalDateTime startTime);
+
+    void updateElapsedTime(Duration elapsed);
 
     int getGamePanelWidth();
 

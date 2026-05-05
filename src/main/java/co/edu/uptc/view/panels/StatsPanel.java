@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -145,6 +146,15 @@ public class StatsPanel extends JPanel {
             startTimeGame.setText(startTime.format(formatter));
         }
     }
+
+    public void updateElapsedTime(Duration elapsed) {
+    long hours = elapsed.toHours();
+    long minutes = elapsed.toMinutes() % 60;
+    long seconds = elapsed.getSeconds() % 60;
+    
+    String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    timer.setText(time);
+}
 
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;

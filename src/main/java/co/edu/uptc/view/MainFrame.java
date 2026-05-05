@@ -1,6 +1,7 @@
 package co.edu.uptc.view;
 
 import java.awt.BorderLayout;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -125,6 +126,11 @@ public class MainFrame extends JFrame implements ViewInterface {
     @Override
     public void updateStartTime(LocalDateTime startTime) {
         statsPanel.updateStartTime(startTime);
+    }
+
+    @Override
+    public void updateElapsedTime(Duration elapsed) {
+        statsPanel.updateElapsedTime(elapsed);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package co.edu.uptc.presenter;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,7 +52,11 @@ public class Presenter implements PresenterInterface {
         if (model.isPaused())
             return;
         view.updatePauseButton(model.isPaused());
-        view.updateStartTime(model.getStartTime()); // ← NUEVO
+        view.updateStartTime(model.getStartTime());
+        if (model.getStartTime() != null) {
+            Duration elapsed = Duration.between(model.getStartTime(), LocalDateTime.now());
+            view.updateElapsedTime(elapsed);
+        }
         model.update();
 
         if (model.isGameOver()) {
