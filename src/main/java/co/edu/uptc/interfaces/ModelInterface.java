@@ -18,7 +18,9 @@ public interface ModelInterface {
 
     public boolean isGameOver();
 
-    void initialize(int width, int height);
+    public void initialize(int width, int height);
+
+    public void addBall();
 
     public ArrayList<Ball> getBalls();
 

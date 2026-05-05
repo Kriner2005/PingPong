@@ -11,9 +11,11 @@ public interface PresenterInterface {
 
     void movePaddleDown();
 
-    void restartGame();
+    void addBall();
 
     void pauseGame();
+
+    void restartGame();
 
     void startGameLoop();
 

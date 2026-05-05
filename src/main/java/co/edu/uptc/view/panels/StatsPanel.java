@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import co.edu.uptc.interfaces.PresenterInterface;
-import co.edu.uptc.model.Game;
 
 public class StatsPanel extends JPanel {
     private PresenterInterface presenter;
@@ -23,9 +22,6 @@ public class StatsPanel extends JPanel {
     private JButton btnPaused;
     private Box bouncesContainer;
     private GamePanel gamePanel;
-    private boolean start;
-    private boolean paused;
-    private boolean addBall;
 
     public StatsPanel() {
         initPanel();
@@ -72,18 +68,15 @@ public class StatsPanel extends JPanel {
         add(mainBox, BorderLayout.CENTER);
     }
 
-    // Cuando se agrega una pelota
     public void addBallBounceLabel(int ballIndex) {
         JLabel label = new JLabel("Pelota " + (ballIndex + 1) + ": 0 rebotes");
         numBounces.add(label);
         bouncesContainer.add(label);
 
-        // Redibujar para ver cambios
         revalidate();
         repaint();
     }
 
-    // Actualizar contador (llamar cada frame)
     public void updateBallBounces(int ballIndex, int bounceCount) {
         if (ballIndex < numBounces.size()) {
             numBounces.get(ballIndex).setText("Pelota " + (ballIndex + 1) + ": " + bounceCount + " rebotes");
@@ -112,6 +105,7 @@ public class StatsPanel extends JPanel {
         JButton btnreset = new JButton("Reiniciar");
         btnreset.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnreset.addActionListener(e -> {
+            presenter.restartGame();
             gamePanel.requestFocus();
         });
         box.add(btnreset);
@@ -136,6 +130,7 @@ public class StatsPanel extends JPanel {
         JButton btnAddBall = new JButton("Agregar peltota");
         btnAddBall.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnAddBall.addActionListener(e -> {
+            presenter.addBall();
             gamePanel.requestFocus();
         });
         box.add(btnAddBall);

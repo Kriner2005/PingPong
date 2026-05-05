@@ -73,10 +73,9 @@ public class Presenter implements PresenterInterface {
         model.movePaddleDown();
     }
 
-    @Override
-    public void restartGame() {
-        model.resetGameOverFlag();
-        model.resetGame();
+        @Override
+    public void addBall() {
+        model.addBall();
     }
 
     @Override
@@ -85,6 +84,12 @@ public class Presenter implements PresenterInterface {
             boolean currentState = model.isPaused();
             model.setPaused(!currentState);
         }
+    }
+
+    @Override
+    public void restartGame() {
+        model.resetGameOverFlag();
+        model.resetGame();
     }
 
     @Override

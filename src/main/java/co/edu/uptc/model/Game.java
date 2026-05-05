@@ -38,6 +38,11 @@ public class Game implements ModelInterface {
     }
 
     @Override
+    public void addBall() {
+        balls.add(new Ball(panelWidth / 2, panelHeight / 2, 40, 45, 7));
+    }
+
+    @Override
     public void movePaddleUp() {
         paddle.moveUp(panelHeight);
     }
