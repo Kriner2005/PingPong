@@ -110,6 +110,8 @@ public class Presenter implements PresenterInterface {
     public void restartGame() {
         model.resetGameOverFlag();
         model.resetGame();
+        view.restartLabels();
+        initializeBallLabels();
     }
 
     @Override

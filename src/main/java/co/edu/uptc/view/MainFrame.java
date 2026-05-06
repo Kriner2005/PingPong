@@ -145,6 +145,11 @@ public class MainFrame extends JFrame implements ViewInterface {
         statsPanel.updateElapsedTime(elapsed);
     }
 
+    @Override
+    public void restartLabels() {
+        statsPanel.restartLabels();
+    }
+
 
     @Override
     public void showGameOverDialog() {

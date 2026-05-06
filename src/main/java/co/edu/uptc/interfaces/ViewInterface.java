@@ -31,6 +31,8 @@ public interface ViewInterface {
 
     void updateElapsedTime(Duration elapsed);
 
+    void restartLabels();
+
     int getGamePanelWidth();
 
     int getGamePanelHeight();

@@ -155,12 +155,30 @@ public class StatsPanel extends JPanel {
         String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
         timer.setText(time);
     }
-    
+
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
     }
 
     public void setGameReference(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+    }
+
+    public void restartLabels() {
+        // Limpiar la lista de labels
+        numBounces.clear();
+
+        // Limpiar los componentes visuales del contenedor
+        bouncesContainer.removeAll();
+
+        // Agregar nuevamente el título
+        bouncesContainer.add(Box.createVerticalStrut(20));
+        JLabel titleBounces = new JLabel("Rebotes por pelota:");
+        bouncesContainer.add(titleBounces);
+        bouncesContainer.add(Box.createVerticalStrut(10));
+
+        // Redibujar
+        revalidate();
+        repaint();
     }
 }
