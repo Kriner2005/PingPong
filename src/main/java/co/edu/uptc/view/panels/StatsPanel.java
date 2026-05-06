@@ -35,7 +35,7 @@ public class StatsPanel extends JPanel {
     private void initPanel() {
         setPreferredSize(new Dimension(250, 800));
         setLayout(new BorderLayout());
-        setBackground(Color.blue);
+        setBackground(Color.decode("#8D9797"));
     }
 
     private void addComponents() {

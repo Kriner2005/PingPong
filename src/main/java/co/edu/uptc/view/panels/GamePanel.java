@@ -32,7 +32,7 @@ public class GamePanel extends JPanel {
 
     private void initPanel() {
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.decode("#4E545C"));
         this.setFocusable(true);
     }
 
