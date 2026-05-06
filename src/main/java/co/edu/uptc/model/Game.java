@@ -1,5 +1,6 @@
 package co.edu.uptc.model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -29,6 +30,18 @@ public class Game implements ModelInterface {
     public void update() {
         if (paused)
             return;
+
+        if (startTime != null) {
+            Duration elapsed = Duration.between(startTime, LocalDateTime.now());
+            long seconds = elapsed.getSeconds();
+
+            // Cada 10 segundos, aumenta velocidad
+            if (seconds > 0 && seconds % 30 == 0) {
+                for (Ball ball : balls) {
+                    ball.setSpeed(ball.getSpeed() + 0.5); // Aumenta 0.5
+                }
+            }
+        }
 
         for (Ball ball : balls) {
             ball.update(panelWidth, panelHeight);
