@@ -23,7 +23,7 @@ public class Game implements ModelInterface {
         this.startTime = LocalDateTime.now(); // ← Registrar hora
         this.balls = new ArrayList<>();
         balls.add(new Ball(width / 2, height / 2, 40, 45, 7));
-        this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 10);
+        this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 15);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Game implements ModelInterface {
             // Cada 10 segundos, aumenta velocidad
             if (seconds > 0 && seconds % 30 == 0) {
                 for (Ball ball : balls) {
-                    ball.setSpeed(ball.getSpeed() + 0.5); // Aumenta 0.5
+                    ball.setSpeed(ball.getSpeed() + 0.1); // Aumenta 0.5
                 }
             }
         }
