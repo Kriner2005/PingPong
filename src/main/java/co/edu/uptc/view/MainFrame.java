@@ -114,8 +114,20 @@ public class MainFrame extends JFrame implements ViewInterface {
 
     @Override
     public void updateGameView(ArrayList<Ball> balls, Paddle paddle) {
-
         gamePanel.upDateGameView(balls, paddle);
+    }
+
+    @Override
+    public void updateBallsBounces(ArrayList<Ball> balls) {
+        for (int i = 0; i < balls.size(); i++) {
+            statsPanel.updateBallBounces(i, balls.get(i).getBounces());
+            ;
+        }
+    }
+
+    @Override
+    public void updateBallsList(int index) {
+        statsPanel.addBallBounceLabel(index);
     }
 
     @Override
@@ -132,6 +144,7 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void updateElapsedTime(Duration elapsed) {
         statsPanel.updateElapsedTime(elapsed);
     }
+
 
     @Override
     public void showGameOverDialog() {

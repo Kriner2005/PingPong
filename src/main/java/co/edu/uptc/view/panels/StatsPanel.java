@@ -130,7 +130,7 @@ public class StatsPanel extends JPanel {
     }
 
     private void addBtnAddBall(Box box) {
-        JButton btnAddBall = new JButton("Agregar peltota");
+        JButton btnAddBall = new JButton("Agregar pelota");
         btnAddBall.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnAddBall.addActionListener(e -> {
             presenter.addBall();
@@ -148,14 +148,14 @@ public class StatsPanel extends JPanel {
     }
 
     public void updateElapsedTime(Duration elapsed) {
-    long hours = elapsed.toHours();
-    long minutes = elapsed.toMinutes() % 60;
-    long seconds = elapsed.getSeconds() % 60;
-    
-    String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-    timer.setText(time);
-}
+        long hours = elapsed.toHours();
+        long minutes = elapsed.toMinutes() % 60;
+        long seconds = elapsed.getSeconds() % 60;
 
+        String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        timer.setText(time);
+    }
+    
     public void setPresenter(PresenterInterface presenter) {
         this.presenter = presenter;
     }

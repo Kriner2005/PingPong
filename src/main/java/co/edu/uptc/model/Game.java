@@ -33,6 +33,7 @@ public class Game implements ModelInterface {
         for (Ball ball : balls) {
             ball.update(panelWidth, panelHeight);
             if (paddle.collidesWithBall(ball)) {
+                ball.countBounces();
                 ball.bounceOffPaddle(paddle);
             }
             if (ball.getX() <= 0) {

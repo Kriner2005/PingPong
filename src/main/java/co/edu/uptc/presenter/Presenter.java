@@ -21,6 +21,7 @@ public class Presenter implements PresenterInterface {
 
     @Override
     public void startGameLoop() {
+        initializeBallLabels();
         executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
             while (running) {
@@ -53,10 +54,12 @@ public class Presenter implements PresenterInterface {
             return;
         view.updatePauseButton(model.isPaused());
         view.updateStartTime(model.getStartTime());
+
         if (model.getStartTime() != null) {
             Duration elapsed = Duration.between(model.getStartTime(), LocalDateTime.now());
             view.updateElapsedTime(elapsed);
         }
+
         model.update();
 
         if (model.isGameOver()) {
@@ -67,7 +70,15 @@ public class Presenter implements PresenterInterface {
         ArrayList<Ball> balls = model.getBalls();
 
         view.updateGameView(balls, model.getPaddle());
+        view.updateBallsBounces(balls);
 
+    }
+
+    private void initializeBallLabels() {
+        ArrayList<Ball> balls = model.getBalls();
+        for (int i = 0; i < balls.size(); i++) {
+            view.updateBallsList(i);
+        }
     }
 
     @Override
@@ -83,6 +94,8 @@ public class Presenter implements PresenterInterface {
     @Override
     public void addBall() {
         model.addBall();
+        int lastBall = model.getBalls().size() - 1;
+        view.updateBallsList(lastBall);
     }
 
     @Override

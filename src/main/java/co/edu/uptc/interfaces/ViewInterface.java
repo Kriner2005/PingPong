@@ -17,6 +17,10 @@ public interface ViewInterface {
 
     void updateGameView(ArrayList<Ball> balls, Paddle paddle);
 
+    void updateBallsBounces(ArrayList<Ball> balls);
+
+    void updateBallsList(int index);
+
     void updatePauseButton(boolean isPaused);
 
     void addComponents();

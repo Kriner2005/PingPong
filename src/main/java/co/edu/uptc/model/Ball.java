@@ -6,6 +6,7 @@ public class Ball {
     private double angle;
     private double speed;
     private int size;
+    private int bounces;
 
     public Ball(int initialX, int initialY, int size, double angle, double speed) {
         this.x = initialX;
@@ -24,12 +25,12 @@ public class Ball {
 
         if (x <= 0 || x + size >= width) {
             x = Math.max(0, Math.min(x, width - size));
-            angle = 180 - angle; // Invertir horizontalmente
+            angle = 180 - angle;
         }
 
         if (y <= 0 || y + size >= height) {
             y = Math.max(0, Math.min(y, height - size));
-            angle = -angle; // Invertir verticalmente
+            angle = -angle;
         }
     }
 
@@ -41,6 +42,10 @@ public class Ball {
         proporcion = Math.max(0, Math.min(1, proporcion));
 
         angle = -60 + (proporcion * 120);
+    }
+
+    public void countBounces() {
+        bounces++;
     }
 
     public double getX() {
@@ -57,13 +62,22 @@ public class Ball {
 
     public int getSize() {
         return size;
-    }    
-    
+    }
+
     public double getAngle() {
         return angle;
-    }    
+    }
+
     public void setAngle(double angle) {
         this.angle = angle;
-    }    
+    }
+
+    public void setBounces(int  bounces) {
+        this.bounces = bounces;
+    }
+    
+    public int getBounces() {
+        return bounces;
+    }
 
 }
