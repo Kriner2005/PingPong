@@ -20,7 +20,7 @@ public class Game implements ModelInterface {
         this.panelHeight = height;
         this.gameOver = false;
         this.paused = false;
-        this.startTime = LocalDateTime.now(); // ← Registrar hora
+        this.startTime = LocalDateTime.now();
         this.balls = new ArrayList<>();
         balls.add(new Ball(width / 2, height / 2, 40, 45, 7));
         this.paddle = new Paddle(50, height / 2 - 50, 20, 100, 15);
@@ -35,10 +35,10 @@ public class Game implements ModelInterface {
             Duration elapsed = Duration.between(startTime, LocalDateTime.now());
             long seconds = elapsed.getSeconds();
 
-            // Cada 10 segundos, aumenta velocidad
-            if (seconds > 0 && seconds % 30 == 0) {
+            // Cada 10 segundos aumenta velocidad
+            if (seconds > 0 && seconds % 10 == 0) {
                 for (Ball ball : balls) {
-                    ball.setSpeed(ball.getSpeed() + 0.1); // Aumenta 0.5
+                    ball.setSpeed(ball.getSpeed() + 0.01);
                 }
             }
         }
@@ -81,6 +81,7 @@ public class Game implements ModelInterface {
         return gameOver;
     }
 
+    @Override
     public void resetGameOverFlag() {
         gameOver = false;
     }

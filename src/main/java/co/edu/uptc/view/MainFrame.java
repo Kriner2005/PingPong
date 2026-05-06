@@ -121,7 +121,6 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void updateBallsBounces(ArrayList<Ball> balls) {
         for (int i = 0; i < balls.size(); i++) {
             statsPanel.updateBallBounces(i, balls.get(i).getBounces());
-            ;
         }
     }
 
@@ -149,7 +148,6 @@ public class MainFrame extends JFrame implements ViewInterface {
     public void restartLabels() {
         statsPanel.restartLabels();
     }
-
 
     @Override
     public void showGameOverDialog() {
